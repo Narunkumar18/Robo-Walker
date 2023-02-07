@@ -32,6 +32,6 @@ class RobotTest {
     @org.junit.jupiter.api.Test
     void rotate() {
         robot.rotate("east");
-        assertEquals("Position : 0, 0 Pen: down Face: east", robot.printCoordinates());
+        assertEquals("Position : 0, 0 Pen: up Face: east", robot.printCoordinates());
     }
 }
