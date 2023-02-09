@@ -20,7 +20,7 @@ public class Robot {
 
     void move(int steps) {
         try {
-            if (this.pen == "up") {
+            if (this.pen == "down") {
                 this.setValueAtCurrentPosition();
                 for (int i = 0; i < steps; i = i + 1) {
                     switch (this.faceDirection) {
@@ -44,7 +44,7 @@ public class Robot {
                     }
                 }
             } else {
-                System.out.println("Make pen up");
+                System.out.println("Make pen down to move");
             }
         } catch (ArrayIndexOutOfBoundsException err) {
             System.out.println("moved to edge of room could not go to the size specified due to size constraint");

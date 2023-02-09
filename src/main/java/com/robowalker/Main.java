@@ -49,7 +49,6 @@ public class Main {
                 case "Q":
                     System.exit(0);
             }
-
         }
     }
 }
