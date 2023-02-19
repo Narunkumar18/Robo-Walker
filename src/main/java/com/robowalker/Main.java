@@ -45,6 +45,8 @@ public class Main {
                 case "P":
                     current.printMatrix();
                     break;
+                     case "Q":
+                    System.exit(0);
 
                
             }
