@@ -8,10 +8,11 @@ public class Main {
         while (true) {
             Scanner inputScanner = new Scanner(System.in);
             System.out.print("> Enter the command: ");
-            String command = inputScanner.nextLine();
-            String[] commands = command.split(" ");
+            String command = inputScanner.nextLine(); // "i 10"
+            String[] commands = command.split(" "); // ["i", "10"]
             switch (commands[0].toUpperCase()) {
                 case "I":
+//                    New Robot(15)
                     current = new Robot(Integer.parseInt(commands[1]));
                     break;
                 case "U":
@@ -49,7 +50,6 @@ public class Main {
                 case "Q":
                     System.exit(0);
             }
-
         }
     }
 }

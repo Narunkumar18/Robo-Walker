@@ -7,11 +7,27 @@ public class Robot {
 
     Robot(int size) {
         this.room = new int[size][size];
+        this.size = size;
         this.currentPositionX = 0;
         this.currentPositionY = 0;
         this.faceDirection = "north";
         this.pen = "up";
-        this.size = size;
+    }
+
+    void setCurrentPositionY(int currentPositionY) {
+        if (currentPositionY < this.size && currentPositionY >= 0) {
+            this.currentPositionY = currentPositionY;
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+    }
+
+    void setCurrentPositionX(int currentPositionX) {
+        if (currentPositionX < this.size && currentPositionX >= 0) {
+            this.currentPositionX = currentPositionX;
+        } else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     void setValueAtCurrentPosition() {
@@ -20,31 +36,52 @@ public class Robot {
 
     void move(int steps) {
         try {
-            if (this.pen == "up") {
-                this.setValueAtCurrentPosition();
+            if (this.pen == "down") {
+                if (this.room[this.currentPositionX][this.currentPositionY] == 0) {
+                    this.setValueAtCurrentPosition();
+                    steps = steps - 1;
+                }
                 for (int i = 0; i < steps; i = i + 1) {
                     switch (this.faceDirection) {
                         case "north":
-                            this.currentPositionY = this.currentPositionY + 1;
+                            this.setCurrentPositionY(this.currentPositionY + 1);
                             this.setValueAtCurrentPosition();
                             break;
                         case "south":
-                            this.currentPositionY = this.currentPositionY - 1;
+                            this.setCurrentPositionY(this.currentPositionY - 1);
                             this.setValueAtCurrentPosition();
                             break;
                         case "east":
-                            this.currentPositionX = this.currentPositionX + 1;
+                            this.setCurrentPositionX(this.currentPositionX + 1);
                             this.setValueAtCurrentPosition();
                             break;
 
                         case "west":
-                            this.currentPositionX = this.currentPositionX - 1;
+                            this.setCurrentPositionX(this.currentPositionX - 1);
                             this.setValueAtCurrentPosition();
                             break;
                     }
                 }
-            } else {
-                System.out.println("Make pen up");
+            } else if (this.pen == "up") {
+                if (this.room[this.currentPositionX][this.currentPositionY] == 0) {
+                    steps = steps - 1;
+                }
+                for (int i = 0; i < steps; i = i + 1) {
+                    switch (this.faceDirection) {
+                        case "north":
+                            this.setCurrentPositionY(this.currentPositionY + 1);
+                            break;
+                        case "south":
+                            this.setCurrentPositionY(this.currentPositionY - 1);
+                            break;
+                        case "east":
+                            this.setCurrentPositionX( this.currentPositionX + 1);
+                            break;
+                        case "west":
+                            this.setCurrentPositionX(this.currentPositionX-1);
+                            break;
+                    }
+                }
             }
         } catch (ArrayIndexOutOfBoundsException err) {
             System.out.println("moved to edge of room could not go to the size specified due to size constraint");
@@ -56,7 +93,8 @@ public class Robot {
     }
 
     String printCoordinates() {
-        return "Position : " + this.currentPositionX + ", " + this.currentPositionY + " Pen: " + this.pen.toLowerCase() + " Face: " + this.faceDirection.toLowerCase();
+        return "Position : " + this.currentPositionX + ", " + this.currentPositionY + " Pen: " + this.pen.toLowerCase()
+                + " Face: " + this.faceDirection.toLowerCase();
     }
 
     void printMatrix() {
@@ -68,7 +106,7 @@ public class Robot {
         }
         for (int i = 0; i < size; i = i + 1) {
             for (int j = 0; j < size; j = j + 1) {
-                if (rotatedArray[i][j] == 1) {
+                if (rotatedArray[i][j] > 0) {
                     System.out.print(" * ");
                 } else {
                     System.out.print(" 0 ");

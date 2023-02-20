@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Robo Walker" />
         <module name="RoboWalker" />
+        <module name="Robo-Walker" />
       </profile>
     </annotationProcessing>
   </component>
