@@ -12,6 +12,7 @@ public class Main {
             String[] commands = command.split(" "); // ["i", "10"]
             switch (commands[0].toUpperCase()) {
                 case "I":
+//                    New Robot(15)
                     current = new Robot(Integer.parseInt(commands[1]));
                     break;
                 case "U":
