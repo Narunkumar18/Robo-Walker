@@ -157,3 +157,11 @@ public class Robot {
         }
     }
 }
+public Robot(int size) {
+        this.room = new int[size][size];
+        this.size = size;
+        this.currentPositionX = 0;
+        this.currentPositionY = 0;
+        this.faceDirection = "north";
+        this.pen = "up";
+    }
